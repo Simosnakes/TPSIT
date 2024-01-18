@@ -63,8 +63,9 @@ void stampaListaRicorsiva(Node* lista){
 void aggiungiElementoInizio(Node** lista, int num){
     Node* head;
     head = (Node*)malloc(sizeof(Node));
-    head->next = *lista;
     head->valore = num;
+    head->next = *lista;
+    
     *lista = head;
 }
 
@@ -81,7 +82,7 @@ void aggiungiElementoFondo(Node** lista, int num){
 
 void eliminaUltimoElemento(Node **lista){
     Node *l = *lista;
-    Node *l2 = l;
+    Node *l2;
     while (l->next != NULL){
         l2 = l;
         l = l->next;
