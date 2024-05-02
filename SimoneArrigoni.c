@@ -132,7 +132,7 @@ int main(){
     Coda* scorriCoda = headCoda;
     Coda* scorriTail = tail;
 
-    while(scorriPila != NULL || scorriCoda != NULL){
+    while(scorriPila != NULL && scorriCoda != NULL){
         Pila* remuved = pop(&scorriPila);
         Coda* temp = dequeue(&scorriCoda, &scorriTail);
 
@@ -142,13 +142,15 @@ int main(){
         if(remuved->valore < temp->valore){
             printf("vincitore CODA\n");
             enqueue(&scorriCoda, &scorriTail, temp);
+            free(remuved);
         }else{
             printf("vincitore PILA\n");
             push(&scorriPila, remuved);
+            free(temp);
         }
 
-        scorriPila = scorriPila->next;
-        scorriCoda = scorriCoda->next;
+        //scorriPila = scorriPila->next;
+        //scorriCoda = scorriCoda->next;
     }
 
     if(scorriPila == NULL){
